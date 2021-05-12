@@ -47,10 +47,15 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/addpost"), withAuth, async (req,res) => {
-//   console.log("you have reached the fountain of youth")
-//   res.render("add-post", {logged_in:req.session.logged_in, user_id: req.session.user})
-// }
+router.get("/addpost"), withAuth, async (req,res) => {
+  try {
+  console.log("you have reached the fountain of youth")
+  res.render("add-post", {logged_in:req.session.logged_in, user_id: req.session.user})
+} catch (err) {
+  res.status(500).json(err);
+}
+}
+
 
 router.post("/newpost"), withAuth, async (req, res) => {
   try { 
